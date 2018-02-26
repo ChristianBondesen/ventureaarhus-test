@@ -45,8 +45,8 @@ export const configureStore = () => {
   const store = getStore(true);
 
   // Switch the comments below around to clear store
-  const persistor = persistStore(store);
-  // purgeStoredState(persistConfig);
+  // const persistor = persistStore(store);
+  purgeStoredState(persistConfig);
 
   return { store };
 };
@@ -63,7 +63,7 @@ const getStore = (reactNativeTools: boolean) => {
       applyMiddleware(...middleware),
       global.reduxNativeDevTools
         ? global.reduxNativeDevTools(/*options*/)
-        : noop => noop
+        : (noop) => noop
     );
 
     const store = createStore(reducer, enhancer);

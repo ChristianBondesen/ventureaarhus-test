@@ -1,5 +1,4 @@
 import { Dispatch } from 'redux';
-
 import { IAppState } from './ducks';
 
 export type ReduxOperationReturnType = (

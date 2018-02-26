@@ -6,9 +6,9 @@ export interface IUser {
   id: number;
   name: string;
   thumbnail: string;
-  likes: IEvent[];
-  participate: IEvent[];
-  follows: IEvent[];
+  likedEvents: IEvent[];
+  participatingEvent: IEvent[];
+  followedEvents: IEvent[];
   // more to come
 }
 

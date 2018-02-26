@@ -1,6 +1,6 @@
 import { IUserState } from './reducers';
 
-export const getCommonViewState = (state: IUserState) => ({
+export const getUserViewState = (state: IUserState) => ({
   id: state.id,
   name: state.name,
   thumbnail: state.thumbnail,

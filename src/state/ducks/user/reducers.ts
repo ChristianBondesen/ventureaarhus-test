@@ -33,9 +33,9 @@ export const userReducer = (
         id: action.payload.id,
         name: action.payload.name,
         thumbnail: action.payload.thumbnail,
-        participatingEvents: action.payload.participate,
-        followedEvents: action.payload.follows,
-        likedEvents: action.payload.likes,
+        participatingEvents: action.payload.participatingEvent,
+        followedEvents: action.payload.followedEvents,
+        likedEvents: action.payload.likedEvents,
       };
 
     default:
