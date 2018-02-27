@@ -8,6 +8,7 @@ export interface IUserState {
   likedEvents: types.IEvent[];
   followedEvents: types.IEvent[];
   participatingEvents: types.IEvent[];
+  token: string;
 }
 
 const TAG = 'reducers.ts';
@@ -20,6 +21,7 @@ export const defaultState: IUserState = {
   likedEvents: [],
   followedEvents: [],
   participatingEvents: [],
+  token: '',
 };
 
 export const userReducer = (
@@ -27,7 +29,7 @@ export const userReducer = (
   action: UserStateAction
 ): IUserState => {
   switch (action.type) {
-    case types.SET_USER:
+    case types.SET_USER: {
       return {
         ...state,
         id: action.payload.id,
@@ -37,9 +39,24 @@ export const userReducer = (
         followedEvents: action.payload.followedEvents,
         likedEvents: action.payload.likedEvents,
       };
+    }
 
-    default:
+    case types.SET_TOKEN: {
+      return {
+        ...state,
+        token: action.payload,
+      };
+    }
+
+    case types.SET_LIKED_EVENTS: {
+      return {
+        ...state,
+        likedEvents: action.payload,
+      };
+    }
+    default: {
       return state;
+    }
   }
 };
 

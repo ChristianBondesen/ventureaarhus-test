@@ -19,11 +19,14 @@ import { getCommonViewState } from '../state/ducks/common/selectors';
 import { navigateToRouteWithDispatch } from '../state/navigation/navigationHelper';
 import { NavigationActions } from 'react-navigation';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { IUserOperations } from '../state/ducks/user/operations';
+import { userOperations } from './../state/ducks/user';
 
 const TAG = 'LoginScreen';
 
 export interface ILoginScreenProps {
   commonOperations: ICommonOperations;
+  userOperations: IUserOperations;
   networkCalls: number;
   navigation: {
     dispatch(action: Action);
@@ -31,8 +34,18 @@ export interface ILoginScreenProps {
   };
 }
 
-class LoginScreen extends React.Component<ILoginScreenProps> {
+interface ILoginState {
+  username: string;
+  password: string;
+}
+
+class LoginScreen extends React.Component<ILoginScreenProps, ILoginState> {
   animatedValue: Animated.Value;
+
+  state: ILoginState = {
+    username: '',
+    password: '',
+  };
 
   constructor(props) {
     super(props);
@@ -40,6 +53,13 @@ class LoginScreen extends React.Component<ILoginScreenProps> {
     this.onScreenChange = this.onScreenChange.bind(this);
     this.animatedValue = new Animated.Value(0);
   }
+
+  onLoginPressed = () => {
+    this.props.userOperations.loginAsync(
+      this.state.username,
+      this.state.password
+    );
+  };
 
   onScreenChange = (text) => {
     switch (text) {
@@ -51,14 +71,18 @@ class LoginScreen extends React.Component<ILoginScreenProps> {
         alert('Facebook connecT!');
         break;
       }
-      case 'VentureRouting': {
-        this.props.navigation.navigate(text);
-        break;
-      }
       default:
         alert('no such route');
         return;
     }
+  };
+
+  onPasswordInputChange = (pass) => {
+    this.setState({ password: pass });
+  };
+
+  onUsernameInputChange = (name) => {
+    this.setState({ username: name });
   };
 
   repeatAni() {
@@ -78,7 +102,7 @@ class LoginScreen extends React.Component<ILoginScreenProps> {
   }
 
   componentDidMount() {
-    this.repeatAni();
+    // this.repeatAni(); // uncomment for legitness
   }
 
   render() {
@@ -108,19 +132,24 @@ class LoginScreen extends React.Component<ILoginScreenProps> {
               underlineColorAndroid="transparent"
               style={styles.input}
               placeholder="User name"
+              onChangeText={this.onUsernameInputChange}
+              value={this.state.username}
             />
 
             <TextInput
               underlineColorAndroid="transparent"
               style={styles.input}
+              secureTextEntry={true}
               placeholder="Password"
+              onChangeText={this.onPasswordInputChange}
+              value={this.state.password}
             />
 
             <TouchableOpacity style={styles.btnContainer}>
               <Text
                 style={styles.loginBtn}
                 // tslint:disable-next-line:jsx-no-lambda
-                onPress={() => this.onScreenChange('VentureRouting')}
+                onPress={this.onLoginPressed}
               >
                 {' '}
                 LOGIN
@@ -167,6 +196,7 @@ const mapStateToProps = (state: IAppState, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     commonOperations: bindActionCreators(commonOperations, dispatch),
+    userOperations: bindActionCreators(userOperations, dispatch),
   };
 };
 

@@ -24,5 +24,6 @@ export const MainNavigator = StackNavigator(
   },
   {
     initialRouteName: INITIAL_ROUTE,
+    headerMode: 'none',
   }
 );

@@ -7,4 +7,5 @@ export const getUserViewState = (state: IUserState) => ({
   participatingEvent: state.participatingEvents,
   likedEvents: state.likedEvents,
   followedEvents: state.followedEvents,
+  token: state.token,
 });
