@@ -42,13 +42,13 @@ interface ILoginState {
 class LoginScreen extends React.Component<ILoginScreenProps, ILoginState> {
   animatedValue: Animated.Value;
 
-  state: ILoginState = {
-    username: '',
-    password: '',
-  };
-
   constructor(props) {
     super(props);
+
+    this.state = {
+      username: 'donger@donger',
+      password: 'donger1',
+    };
 
     this.onScreenChange = this.onScreenChange.bind(this);
     this.animatedValue = new Animated.Value(0);
@@ -86,7 +86,6 @@ class LoginScreen extends React.Component<ILoginScreenProps, ILoginState> {
   };
 
   repeatAni() {
-    console.log('Im fucking spinning m8!');
     Animated.sequence([
       Animated.timing(this.animatedValue, {
         toValue: 1,
@@ -208,7 +207,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#1B8057',
-    padding: 20,
   },
   flexLogo: {
     borderRadius: 30,

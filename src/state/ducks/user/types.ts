@@ -1,3 +1,5 @@
+import { IEvent } from '../Event/types';
+
 export const SET_USER = 'user/SET_USER'; // Adds user to the store
 export const SET_TOKEN = 'user/SET_TOKEN';
 export const SET_LIKED_EVENTS = 'user/SET_LIKED_EVENTS';
@@ -14,13 +16,5 @@ export interface IUser {
   participatingEvent: IEvent[];
   followedEvents: IEvent[];
   token: string;
-  // more to come
-}
-
-export interface IEvent {
-  id: number;
-  name: string;
-  date: Date;
-  ticketUrl: string;
   // more to come
 }

@@ -1,13 +1,14 @@
 import { UserStateAction } from './actions';
 import * as types from './types';
+import { IEvent } from '../Event/types';
 
 export interface IUserState {
   id: number;
   name: string;
   thumbnail: string;
-  likedEvents: types.IEvent[];
-  followedEvents: types.IEvent[];
-  participatingEvents: types.IEvent[];
+  likedEvents: IEvent[];
+  followedEvents: IEvent[];
+  participatingEvents: IEvent[];
   token: string;
 }
 

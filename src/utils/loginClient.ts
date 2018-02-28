@@ -7,12 +7,8 @@ const okResponse = [200, 201, 202, 203];
 
 class LoginClient implements INetworkClient {
   async getAsync(uri: string) {
-    const response = await fetch(uri);
-
     try {
-      if (okResponse.some((i) => i === response.status)) {
-        return await response.json();
-      }
+      return await fetch(uri);
     } catch (error) {
       throw error;
     }

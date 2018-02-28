@@ -14,6 +14,10 @@ import userReducer, {
   defaultState as userDefault,
   IUserState,
 } from './user/reducers';
+import occurrencesReducer, {
+  defaultState as occurrencesDefault,
+  IOccurrenceState,
+} from './Occurrences/reducers';
 // import likesReducer, {
 //   ILikesState,
 //   defaultState as likesDefault,
@@ -25,6 +29,7 @@ export interface IAppState {
   // likes: ILikesState;
   nav: NavigationState;
   user: IUserState;
+  occurrences: IOccurrenceState;
 }
 
 // The default state of your app! set your states here
@@ -33,6 +38,7 @@ export const appDefaultState: IAppState = {
   // likes: likesDefault,
   nav: navDefault,
   user: userDefault,
+  occurrences: occurrencesDefault,
 };
 
 // @ts-ignore https://github.com/Microsoft/TypeScript/issues/16795
@@ -41,4 +47,5 @@ export const rootReducer = combineReducers({
   // likes: likesReducer,
   common: commonReducer,
   user: userReducer,
+  occurrences: occurrencesReducer,
 });

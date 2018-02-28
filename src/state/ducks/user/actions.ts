@@ -1,5 +1,6 @@
 import { IFluxStandardAction } from '../FluxStandardAction';
 import * as types from './types';
+import { IEvent } from '../Event/types';
 
 export interface ISetUser extends IFluxStandardAction {
   type: types.SET_USER;
@@ -13,7 +14,7 @@ export interface ISetToken extends IFluxStandardAction {
 
 export interface ISetLikedEvents extends IFluxStandardAction {
   type: types.SET_LIKED_EVENTS;
-  payload: types.IEvent[];
+  payload: IEvent[];
 }
 
 export type UserStateAction = ISetUser | ISetToken | ISetLikedEvents;
@@ -28,7 +29,7 @@ export const setToken = (token: string): ISetToken => ({
   payload: token,
 });
 
-export const setLikedEvents = (events: types.IEvent[]): ISetLikedEvents => ({
+export const setLikedEvents = (events: IEvent[]): ISetLikedEvents => ({
   type: types.SET_LIKED_EVENTS,
   payload: events,
 });
@@ -36,7 +37,7 @@ export const setLikedEvents = (events: types.IEvent[]): ISetLikedEvents => ({
 export interface IUserActions {
   setUser(user: types.IUser);
   setToken(token: string);
-  setLikedEvents(events: types.IEvent[]);
+  setLikedEvents(events: IEvent[]);
 }
 
 export default {
