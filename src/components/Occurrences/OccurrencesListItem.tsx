@@ -8,14 +8,14 @@ import {
 import * as React from 'react';
 import * as moment from 'moment';
 
-const RenderListItem = props => {
+const RenderListItem = (props) => {
   const itemSelected = () => {
     alert(props.item.event.excerpt);
   };
 
   const now = moment(props.item.startDate).format('DD / MM / YYYY - HH:mm');
 
-  const getImage = image => {
+  const getImage = (image) => {
     if (image) {
       return image;
     } else {
