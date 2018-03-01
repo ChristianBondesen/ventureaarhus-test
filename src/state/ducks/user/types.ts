@@ -1,4 +1,4 @@
-import { IEvent } from '../Event/types';
+import { IEvent } from '../Occurrences/types';
 
 export const SET_USER = 'user/SET_USER'; // Adds user to the store
 export const SET_TOKEN = 'user/SET_TOKEN';
