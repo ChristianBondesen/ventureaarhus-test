@@ -61,7 +61,7 @@ class LoginScreen extends React.Component<ILoginScreenProps, ILoginState> {
     );
   };
 
-  onScreenChange = (text) => {
+  onScreenChange = text => {
     switch (text) {
       case 'Register': {
         this.props.navigation.navigate(text);
@@ -77,11 +77,11 @@ class LoginScreen extends React.Component<ILoginScreenProps, ILoginState> {
     }
   };
 
-  onPasswordInputChange = (pass) => {
+  onPasswordInputChange = pass => {
     this.setState({ password: pass });
   };
 
-  onUsernameInputChange = (name) => {
+  onUsernameInputChange = name => {
     this.setState({ username: name });
   };
 
@@ -101,7 +101,7 @@ class LoginScreen extends React.Component<ILoginScreenProps, ILoginState> {
   }
 
   componentDidMount() {
-    // this.repeatAni(); // uncomment for legitness
+    this.repeatAni(); // uncomment for legitness
   }
 
   render() {
@@ -192,7 +192,7 @@ const mapStateToProps = (state: IAppState, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     commonOperations: bindActionCreators(commonOperations, dispatch),
     userOperations: bindActionCreators(userOperations, dispatch),

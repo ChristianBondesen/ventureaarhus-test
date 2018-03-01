@@ -8,7 +8,8 @@ const asyncGetOccurrences = () => {
   return async (dispatch: Dispatch<any>, getState: () => IAppState) => {
     const state = getState();
 
-    const uri = 'https://api.detskeriaarhus.dk/api/occurrences';
+    const uri =
+      'https://api.detskeriaarhus.dk/api/occurrences?startDate[after]=now'; // now is for today
 
     const response = await loginClient.getAsync(uri);
 
