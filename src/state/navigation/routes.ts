@@ -4,9 +4,9 @@ import { COLORS } from '../../commonStyles';
 import { RouteNames } from './../../enums/navigationEnums';
 import AppContainer from '../../AppContainer';
 import LoginScreen from '../../components/LoginScreen';
-import SomethingScreen from '../../components/Somethingelse/SomethingScreen';
+import OccurrencesScreen from '../../components/Occurrences/OccurrencesScreen';
 
-export const INITIAL_ROUTE = 'SomethingScreen';
+export const INITIAL_ROUTE = RouteNames.LoginNav;
 
 const headerTitleStyle = {
   color: COLORS.SECONDARY,
@@ -18,8 +18,8 @@ export const MainNavigator = StackNavigator(
     LoginNav: {
       screen: LoginScreen,
     },
-    SomethingScreen: {
-      screen: SomethingScreen,
+    OccurrencesNav: {
+      screen: OccurrencesScreen,
     },
   },
   {

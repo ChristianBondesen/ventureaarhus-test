@@ -23,7 +23,7 @@ import { IOccurrencesOperations } from '../../state/ducks/Occurrences/operations
 import { getOccurencesViewState } from '../../state/ducks/Occurrences/selectors';
 import RenderListItem from './OccurrencesListItem';
 
-export interface ISomethingScreenProps {
+export interface IOccurrencesScreenProps {
   occurrencesOperations: IOccurrencesOperations;
   occurrencesList: IOccurrence[];
 }
@@ -31,9 +31,9 @@ export interface ISomethingScreenProps {
 // interface IOccurencesListState {
 // }
 
-const TAG = 'SomethingScreen';
+const TAG = 'OccurrencesScreen';
 
-class SomethingScreen extends React.Component<ISomethingScreenProps> {
+class OccurrencesScreen extends React.Component<IOccurrencesScreenProps> {
   constructor(props) {
     super(props);
     this.listItemRender = this.listItemRender.bind(this);
@@ -74,4 +74,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SomethingScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(OccurrencesScreen);

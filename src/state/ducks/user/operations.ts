@@ -4,6 +4,7 @@ import loginClient from '../../../utils/loginClient';
 import { ReduxOperationReturnType } from '../../ReduxOperationReturnType';
 import * as actions from './actions';
 import { NavigationActions } from 'react-navigation';
+import { RouteNames } from '../../../enums/navigationEnums';
 
 const uri = 'http://questaarhusapi.azurewebsites.net/Account/Login';
 
@@ -17,7 +18,9 @@ const loginAsync = (username: string, password: string) => {
       try {
         const respText = await response.text();
         dispatch(actions.setToken(respText));
-        dispatch(NavigationActions.navigate({ routeName: 'SomethingScreen' }));
+        dispatch(
+          NavigationActions.navigate({ routeName: RouteNames.OccurrencesNav })
+        );
       } catch (error) {
         throw error;
       }

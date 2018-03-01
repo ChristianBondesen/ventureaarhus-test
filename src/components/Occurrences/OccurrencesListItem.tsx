@@ -7,14 +7,6 @@ import {
 } from 'react-native';
 import * as React from 'react';
 
-const checkForImage = (image) => {
-  if (image) {
-    return image;
-  } else {
-    return 'https://facebook.github.io/react/logo-og.png';
-  }
-};
-
 const RenderListItem = (props) => {
   const itemSelected = () => {
     alert(props.item.event.excerpt);
@@ -23,7 +15,7 @@ const RenderListItem = (props) => {
   return (
     <ImageBackground
       style={styles.picture}
-      source={{ uri: checkForImage(props.item.event.image) }}
+      source={{ uri: props.item.event.image }}
     >
       <TouchableOpacity style={styles.button} onPress={itemSelected}>
         <Text style={styles.titleText}> {props.item.event.name} </Text>
@@ -40,7 +32,7 @@ export default RenderListItem;
 const styles = StyleSheet.create({
   button: {
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     flexDirection: 'row',
     padding: 20,
     borderRadius: 2,
@@ -49,15 +41,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 5,
     fontWeight: 'bold',
-    color: 'red',
+    color: 'black',
     fontSize: 15,
   },
   priceText: {
+    backgroundColor: 'white',
     fontStyle: 'italic',
+    borderRadius: 5,
   },
   picture: {
     flex: 1,
     margin: 1,
-    backgroundColor: '#1B8057',
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    opacity: 0.7,
   },
 });
