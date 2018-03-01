@@ -5,12 +5,27 @@ import { RouteNames } from './../../enums/navigationEnums';
 import AppContainer from '../../AppContainer';
 import LoginScreen from '../../components/LoginScreen';
 import OccurrencesScreen from '../../components/Occurrences/OccurrencesScreen';
+import RecommendedScreen from '../../components/Recommended/Recommended';
 
-export const INITIAL_ROUTE = RouteNames.OccurrencesNav;
+export const INITIAL_ROUTE = RouteNames.LoginNav;
 
 const headerTitleStyle = {
   color: COLORS.SECONDARY,
 };
+
+const MainTabNavigator = TabNavigator(
+  {
+    Feed: {
+      screen: OccurrencesScreen,
+    },
+    Favorites: {
+      screen: RecommendedScreen,
+    },
+  },
+  {
+    initialRouteName: 'Feed',
+  }
+);
 
 // NAVIGATORS
 export const MainNavigator = StackNavigator(
@@ -19,7 +34,7 @@ export const MainNavigator = StackNavigator(
       screen: LoginScreen,
     },
     OccurrencesNav: {
-      screen: OccurrencesScreen,
+      screen: MainTabNavigator,
     },
   },
   {

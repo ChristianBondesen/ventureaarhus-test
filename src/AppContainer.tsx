@@ -7,6 +7,7 @@ import {
   StatusBar,
   StyleSheet,
   View,
+  Text,
 } from 'react-native';
 import {
   addNavigationHelpers,
@@ -62,7 +63,7 @@ class AppContainer extends React.Component<IAppContainerProps, IState> {
     BackHandler.removeEventListener(backhandlerListener, this.onBackPress);
   }
 
-  handleConnectivityChange = (isConnected) => {
+  handleConnectivityChange = isConnected => {
     console.log(
       '\nConnectivity change! Now ' +
         (isConnected ? 'online' : 'offline' + '\n')
@@ -88,7 +89,7 @@ class AppContainer extends React.Component<IAppContainerProps, IState> {
     this.setState({ isReady: true });
   };
 
-  handleLoadingError = (error) => {
+  handleLoadingError = error => {
     console.warn(error);
     // TODO: Report error
   };
@@ -141,7 +142,7 @@ const mapStateToProps = (state: IAppState, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     dispatch,
     actions: bindActionCreators(commonActions, dispatch),
