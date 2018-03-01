@@ -6,7 +6,7 @@ import AppContainer from '../../AppContainer';
 import LoginScreen from '../../components/LoginScreen';
 import OccurrencesScreen from '../../components/Occurrences/OccurrencesScreen';
 
-export const INITIAL_ROUTE = RouteNames.OccurrencesNav;
+export const INITIAL_ROUTE = RouteNames.LoginNav;
 
 const headerTitleStyle = {
   color: COLORS.SECONDARY,
