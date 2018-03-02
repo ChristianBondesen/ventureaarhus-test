@@ -1,0 +1,99 @@
+Som bruger vil jeg åbne appen,
+og se et feed af forskellige Events i Aarhus.
+
+Som bruger vil jeg kunne klikke på et event,
+for at se flere detaljer om et "Event"
+
+Som bruger vil jeg kunne søge på "Events",
+for at kunne se Events med et givet søge-ord eller Tag.
+
+som bruger vil jeg kunne klikke på "sortér events"
+så jeg kan sortere events efter: "Pris, dato, sted".
+
+
+
+
+*** Billet ***
+
+Som bruger vil jeg på detajlesiden af et event,
+kunne klikke på "billet link"
+så jeg viderestilles til en billet-side for eventet.
+
+
+
+
+***Beskrivelse***
+
+Som bruger vil jeg på detajlesiden af et event,
+kunne klikke på "Video teaser"-logo/knap 
+for at se en eventuelle video-teaser, for et givet event.
+
+Som bruger vil jeg på detajlesiden af et event,
+kunne se en kort beskrivelse af et Event
+
+Som bruger vil jeg på detajlesiden af et event,
+kunne klikke på "vis mere"
+så jeg kan se en mere detajleret beskrivelse af et Event
+
+Som bruger vil jeg kunne trykke "Event Location"
+så jeg kan se detajler om stedet hvor eventet finder sted.
+
+
+
+
+*** Locations detajler ***
+
+Som bruger vil jeg kunne se,
+Adresse, Beskrivelse, kontaktoplysninger og eventuelt andre events der foregår på stedet.
+
+
+
+**********************
+*** Logged in user ***
+**********************
+
+Som logged in bruger vil jeg kunne logge ind,
+for at får en brugerdefineret oplevelse.
+
+som logged in bruger vil jeg kunne "like/save" et "Event" 
+for at jeg kan notifikationer om tid og sted.
+
+Som logged in bruger vil jeg kunne tilføje "Tags/interesser",
+så jeg kan se en liste af anbefalet Events.
+
+Som logged in bruger vil jeg kunne Swipe/Trykke "Anbefalet"
+for at se forslag til "Events" der matcher min historik.
+
+Som logged in bruger skal jeg kunne trykke "se mine lister"
+for at se en liste over mine "Event lister"
+
+Som logged in bruger skal jeg kunne trykke "Redigér Liste"
+for at jeg kan redigere mine "event Lister"
+
+Som logged in bruger skal jeg kunne trykke invitér,
+for at jeg kan invitere andre til et givet event.
+
+**********************
+*** Fb sync'd user ***
+**********************
+
+Som facebook synkroniseret bruger vil jeg kunne trykke del event,
+så jeg kan dele min deltagelse for det givet event.
+
+Som facebook synkroniseret bruger vil jeg kunne trykke invitér,
+så jeg kan dele eventet med mine FB-venner.
+
+
+
+
+Noter:
+
+Hvordan skal vi sortere i Dato. Start/Slut date.
+Hvad sker der hvis et event bliver slettet fra, tredjeparts API'et.
+Hvad gør vi med billeder når de skal loades (alt for store).
+Pagination.
+Status koder for event status.
+Undersøg Auth2. Undersøg om der generelt skal være en facebook registerings del
+
+
+

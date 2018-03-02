@@ -5,19 +5,27 @@ import { ReduxOperationReturnType } from '../../ReduxOperationReturnType';
 import * as actions from './actions';
 import { NavigationActions } from 'react-navigation';
 import { RouteNames } from '../../../enums/navigationEnums';
+import occurrencesClient from '../../../utils/occurrencesClient';
 
-const uri = 'http://questaarhusapi.azurewebsites.net/Account/Login';
+interface ILoginResponseType {
+  value: string;
+  formatters: string[];
+  contentTypes: string[];
+  declaredType: any;
+  statusCode: number;
+}
 
-const loginAsync = (username: string, password: string) => {
+const loginAsync = (obj: object) => {
   return async (dispatch: Dispatch<any>, getState: () => IAppState) => {
     const state = getState();
+    const uri = 'https://questaarhusapi.azurewebsites.net/api/Account/Login';
 
-    const response = await loginClient.postAsync(uri, username, password);
+    const response = await loginClient.postAsync(uri, obj);
 
     if (response.ok) {
       try {
-        const respText = await response.text();
-        dispatch(actions.setToken(respText));
+        const respText: ILoginResponseType = await response.json();
+        dispatch(actions.setToken(respText.value));
         dispatch(
           NavigationActions.navigate({ routeName: RouteNames.OccurrencesNav })
         );
@@ -28,8 +36,19 @@ const loginAsync = (username: string, password: string) => {
   };
 };
 
+const getRecommendedOccurrences = () => {
+  return async (dispatch: Dispatch<any>, getState: () => IAppState) => {
+    const state = getState();
+
+    const uri =
+      'http://questaarhusapi.azurewebsites.net/api/occurrences/recommended';
+
+    const response = await occurrencesClient.postAsync(uri);
+  };
+};
+
 export type IUserOperations = {
-  loginAsync: (username: string, password: string) => ReduxOperationReturnType;
+  loginAsync: (obj: object) => ReduxOperationReturnType;
 };
 
 export default {

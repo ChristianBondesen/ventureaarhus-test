@@ -19,8 +19,8 @@ import { getCommonViewState } from '../state/ducks/common/selectors';
 import { navigateToRouteWithDispatch } from '../state/navigation/navigationHelper';
 import { NavigationActions } from 'react-navigation';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { IUserOperations } from '../state/ducks/user/operations';
 import { userOperations } from './../state/ducks/user';
+import { IUserOperations } from '../state/ducks/user/operations';
 
 const TAG = 'LoginScreen';
 
@@ -35,7 +35,7 @@ export interface ILoginScreenProps {
 }
 
 interface ILoginState {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -46,7 +46,7 @@ class LoginScreen extends React.Component<ILoginScreenProps, ILoginState> {
     super(props);
 
     this.state = {
-      username: 'donger@donger',
+      email: 'donger@donger',
       password: 'donger1',
     };
 
@@ -55,13 +55,10 @@ class LoginScreen extends React.Component<ILoginScreenProps, ILoginState> {
   }
 
   onLoginPressed = () => {
-    this.props.userOperations.loginAsync(
-      this.state.username,
-      this.state.password
-    );
+    this.props.userOperations.loginAsync(this.state);
   };
 
-  onScreenChange = text => {
+  onScreenChange = (text) => {
     switch (text) {
       case 'Register': {
         this.props.navigation.navigate(text);
@@ -77,12 +74,12 @@ class LoginScreen extends React.Component<ILoginScreenProps, ILoginState> {
     }
   };
 
-  onPasswordInputChange = pass => {
+  onPasswordInputChange = (pass) => {
     this.setState({ password: pass });
   };
 
-  onUsernameInputChange = name => {
-    this.setState({ username: name });
+  onUsernameInputChange = (name) => {
+    this.setState({ email: name });
   };
 
   repeatAni() {
@@ -130,9 +127,9 @@ class LoginScreen extends React.Component<ILoginScreenProps, ILoginState> {
             <TextInput
               underlineColorAndroid="transparent"
               style={styles.input}
-              placeholder="User name"
+              placeholder="User email"
               onChangeText={this.onUsernameInputChange}
-              value={this.state.username}
+              value={this.state.email}
             />
 
             <TextInput
@@ -192,7 +189,7 @@ const mapStateToProps = (state: IAppState, ownProps) => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     commonOperations: bindActionCreators(commonOperations, dispatch),
     userOperations: bindActionCreators(userOperations, dispatch),

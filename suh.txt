@@ -1,0 +1,31 @@
+step 1:
+
+Define your types!
+
+step 2:
+
+Create your Actions!
+
+step 3: 
+
+Add new feature to feature state.
+set your case in the switch(reducer)
+
+step 4:
+
+define your selector.
+
+step 5:
+
+Create Operations if needed,
+remember to export them
+
+step 6:
+
+set your actions and operation
+
+step 7:
+
+when you want to use your feature,
+remember to set mapStateToProps and MapDispatchToProps
+
