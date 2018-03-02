@@ -45,6 +45,13 @@ const getTagsAsync = () => {
   };
 };
 
+/// Donger
+const getRecommendOccurrences = () => {
+  return async (dispatch: Dispatch<any>, getState: () => IAppState) => {
+    const state = getState();
+    const uri = 'https://api.detskeriaarhus.dk/api/occurrences';
+  };
+};
 export type IOccurrencesOperations = {
   asyncGetOccurrences: () => ReduxOperationReturnType;
   getTagsAsync: () => ReduxOperationReturnType;

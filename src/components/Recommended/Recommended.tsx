@@ -15,7 +15,7 @@ export interface IRecommendedScreenProps {
   occurrencesOperations: IOccurrencesOperations;
   recommendedList: IOccurrence[];
   tagsList: ITags[];
-  selectedTags: string; /// donger
+  searchTagsList: string[];
 }
 
 class RecommendedScreen extends React.Component<IRecommendedScreenProps> {
@@ -26,14 +26,17 @@ class RecommendedScreen extends React.Component<IRecommendedScreenProps> {
     this.props.occurrencesOperations.getTagsAsync();
   }
 
-  keyGen = (item) => {
+  keyGen = item => {
     return item['@id'];
   };
 
   renderTags = ({ item }) => <RenderTagItem tag={item} />;
 
   addToSearchList = ({ item }) => {
-    alert(item + 'added to list');
+    this.props.searchTagsList.push(item.name);
+    this.props.searchTagsList.forEach(tag => {
+      this.props.occurrencesOperations.asyncGetOccurrences();
+    });
   };
 
   render() {
@@ -68,7 +71,7 @@ const mapStateToProps = (state: IAppState) => {
   };
 };
 
-const mapDistpatchToProps = (dispatch) => {
+const mapDistpatchToProps = dispatch => {
   return {
     occurrencesOperations: bindActionCreators(occurrencesOperations, dispatch),
   };
