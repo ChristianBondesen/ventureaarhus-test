@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, FlatList, StyleSheet } from 'react-native';
+import { Text, FlatList, StyleSheet, View, Picker } from 'react-native';
 import { IOccurrencesOperations } from '../../state/ducks/Occurrences/operations';
 import { IAppState } from '../../state/ducks';
 import { getOccurencesViewState } from '../../state/ducks/Occurrences/selectors';
@@ -30,14 +30,32 @@ class RecommendedScreen extends React.Component<IRecommendedScreenProps> {
 
   renderTags = ({ item }) => <RenderTagItem tag={item} />;
 
+  addToSearchList = ({ item }) => {
+    alert(item + 'added to list');
+  };
+
   render() {
+    const tagListName = this.props.tagsList.map((t, i) => {
+      return <Picker.Item key={i} value={t.name} label={t.name} />;
+    });
     return (
-      <FlatList
-        style={styles.container}
-        data={this.props.tagsList}
-        keyExtractor={this.keyGen}
-        renderItem={this.renderTags}
-      />
+      <View style={styles.container}>
+        <Picker
+          style={{ flex: 0.5 }}
+          selectedValue={this.props.tagsList}
+          onValueChange={this.addToSearchList}
+        >
+          {tagListName}
+        </Picker>
+
+        <FlatList
+          style={{ flex: 0.5 }}
+          data={this.props.tagsList}
+          keyExtractor={this.keyGen}
+          renderItem={this.renderTags}
+          numColumns={3}
+        />
+      </View>
     );
   }
 }
