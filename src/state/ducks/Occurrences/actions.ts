@@ -12,9 +12,17 @@ export interface ISetOccurrencesTags extends IFluxStandardAction {
   payload: types.ITags[];
 }
 
+export interface IUpdateRecommendedOccurrences extends IFluxStandardAction {
+  type: types.UPDATE_RECOMMENDED_OCCURRENCES;
+  payload: types.IOccurrence[];
+}
+
 // State of your Actions -->
 // (Import for the reducer)
-export type OccurrenceStateAction = ISetOccurrences | ISetOccurrencesTags;
+export type OccurrenceStateAction =
+  | ISetOccurrences
+  | ISetOccurrencesTags
+  | IUpdateRecommendedOccurrences;
 
 // Actual action implementing the former defined interface -->
 export const setOccurrenceList = (
@@ -31,14 +39,23 @@ export const setOccurrencesTags = (
   payload: tags,
 });
 
+export const updateRecommendedOccurrences = (
+  recOccurs: types.IOccurrence[]
+): IUpdateRecommendedOccurrences => ({
+  type: types.UPDATE_RECOMMENDED_OCCURRENCES,
+  payload: recOccurs,
+});
+
 // Interface of all your Actions -->
 export interface IOccurrenceActions {
   setOccurrenceList(occurrences: types.IOccurrence[]);
   setOccurrencesTags(tags: types.ITags[]);
+  updateRecommendedOccurrences(recOccurs: types.IOccurrence[]);
 }
 
 // Export the actions -->
 export default {
   setOccurrenceList,
   setOccurrencesTags,
+  updateRecommendedOccurrences,
 };
