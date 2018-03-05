@@ -7,7 +7,7 @@ import LoginScreen from '../../components/LoginScreen';
 import OccurrencesScreen from '../../components/Occurrences/OccurrencesScreen';
 import RecommendedScreen from '../../components/Recommended/Recommended';
 
-export const INITIAL_ROUTE = RouteNames.LoginNav;
+export const INITIAL_ROUTE = RouteNames.OccurrencesNav;
 
 const headerTitleStyle = {
   color: COLORS.SECONDARY,
