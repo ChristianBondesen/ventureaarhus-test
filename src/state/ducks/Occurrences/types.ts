@@ -1,6 +1,11 @@
 export const SET_OCCURRENCES = 'user/SET_OCCURRENCES';
+export const SET_OCCURRENCES_TAGS = 'user/SET_OCCURRENCES_TAGS';
+export const UPDATE_RECOMMENDED_OCCURRENCES =
+  'user/UPDATE_RECOMMENDED_OCCURRENCES';
 
 export type SET_OCCURRENCES = typeof SET_OCCURRENCES;
+export type SET_OCCURRENCES_TAGS = typeof SET_OCCURRENCES_TAGS;
+export type UPDATE_RECOMMENDED_OCCURRENCES = typeof UPDATE_RECOMMENDED_OCCURRENCES;
 
 export interface IEvent {
   '@context': string;
@@ -59,4 +64,10 @@ export interface IPlace {
   url: string;
   videoUrl?: any;
   langcode: string;
+}
+
+export interface ITags {
+  '@id': string;
+  '@type': string;
+  name: string;
 }

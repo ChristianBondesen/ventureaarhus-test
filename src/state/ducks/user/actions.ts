@@ -1,10 +1,9 @@
 import { IFluxStandardAction } from '../FluxStandardAction';
 import * as types from './types';
-import { IEvent } from '../Event/types';
 
-export interface ISetUser extends IFluxStandardAction {
-  type: types.SET_USER;
-  payload: types.IUser;
+export interface ISetTags extends IFluxStandardAction {
+  type: types.SET_TAGS;
+  payload: string[];
 }
 
 export interface ISetToken extends IFluxStandardAction {
@@ -12,16 +11,11 @@ export interface ISetToken extends IFluxStandardAction {
   payload: string;
 }
 
-export interface ISetLikedEvents extends IFluxStandardAction {
-  type: types.SET_LIKED_EVENTS;
-  payload: IEvent[];
-}
+export type UserStateAction = ISetToken | ISetTags;
 
-export type UserStateAction = ISetUser | ISetToken | ISetLikedEvents;
-
-export const setUser = (user: types.IUser): ISetUser => ({
-  type: types.SET_USER,
-  payload: user,
+export const setTags = (tags: string[]): ISetTags => ({
+  type: types.SET_TAGS,
+  payload: tags,
 });
 
 export const setToken = (token: string): ISetToken => ({
@@ -29,19 +23,12 @@ export const setToken = (token: string): ISetToken => ({
   payload: token,
 });
 
-export const setLikedEvents = (events: IEvent[]): ISetLikedEvents => ({
-  type: types.SET_LIKED_EVENTS,
-  payload: events,
-});
-
 export interface IUserActions {
-  setUser(user: types.IUser);
+  setTags(tags: string[]);
   setToken(token: string);
-  setLikedEvents(events: IEvent[]);
 }
 
 export default {
-  setUser,
+  setTags,
   setToken,
-  setLikedEvents,
 };

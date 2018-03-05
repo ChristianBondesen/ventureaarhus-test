@@ -18,7 +18,7 @@ const MainTabNavigator = TabNavigator(
     Feed: {
       screen: OccurrencesScreen,
     },
-    Favorites: {
+    Recommended: {
       screen: RecommendedScreen,
     },
   },

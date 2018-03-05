@@ -28,9 +28,6 @@ export interface IOccurrencesScreenProps {
   occurrencesList: IOccurrence[];
 }
 
-// interface IOccurencesListState {
-// }
-
 const TAG = 'OccurrencesScreen';
 
 class OccurrencesScreen extends React.Component<IOccurrencesScreenProps> {

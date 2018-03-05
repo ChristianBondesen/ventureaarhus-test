@@ -1,11 +1,8 @@
-export interface INetworkClient {
-  getAsync(uri: string): any;
-  postAsync(uri: string, obj: object): any;
-}
+import { INetworkClient } from './loginClient';
 
 const okResponse = [200, 201, 202, 203];
 
-class LoginClient implements INetworkClient {
+class OccurrencesClient implements INetworkClient {
   async getAsync(uri: string) {
     try {
       return await fetch(uri);
@@ -14,14 +11,14 @@ class LoginClient implements INetworkClient {
     }
   }
 
-  async postAsync(uri: string, obj: object) {
+  async postAsync(uri: string) {
     try {
-      const req = {
-        body: JSON.stringify(obj),
+      const req: RequestInit = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: '',
       };
       return await fetch(uri, req);
     } catch (error) {
@@ -30,5 +27,5 @@ class LoginClient implements INetworkClient {
   }
 }
 
-const loginClient = new LoginClient();
-export default loginClient;
+const occurrencesClient = new OccurrencesClient();
+export default occurrencesClient;
